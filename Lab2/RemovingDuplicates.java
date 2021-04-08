@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class RemovingDuplicates {
 	
 	public int[] modifyArray(int ar[]) {
-		int k=0,len = ar.length,count=0;
+		int k=0,len = ar.length;
         //Removing duplicates
 		for(int ele=0; ele<len-1; ele++) {
 			if(ar[ele] != ar[ele+1])
@@ -15,7 +15,7 @@ public class RemovingDuplicates {
 		}
 		ar[k++] = ar[len-1];
 		while(k < len) {
-			continue; 
+			ar[k++]=0;
 		}
 		//descending order sort
 		for (int i = 0; i < len-1; i++) {
