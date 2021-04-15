@@ -28,42 +28,17 @@ public class EmployeeService {
 	}
 	
 	public void getEmployeeCity(String empid) throws EmployeeException
-	 {
-	
-			if(empid.substring(0,3).contentEquals("011"))
-			{				
+	 {	
+			if(empid.substring(0,3).contentEquals("011"))				
 				System.out.println(" : Delhi");
-				
-			}
-			else if(empid.substring(0,3).contentEquals("022"))			
-			{
-				
+			else if(empid.substring(0,3).contentEquals("022"))				
 				System.out.println(" : Mumbai");
-				
-			}
-			
-			
 			else if(empid.substring(0,3).contentEquals("080"))
-				
-			{
-				
 				System.out.println(" : Bangalore");
-				
-			}
-			
 			else if(empid.substring(0,3).contentEquals("020"))
-				
-			{
-				
 				System.out.println(" : Pune");
-				
-			}
-			
-			
 			else
-			{
 				throw new EmployeeException("Invalid Pincode");
-			}
 	 }
 
 	@Override
