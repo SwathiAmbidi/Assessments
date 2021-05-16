@@ -5,31 +5,46 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.BatchSize;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 
 
 @Entity
-@Table(name = "MyProducts")
+@ApiModel(value="Product Bean")
 public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@ApiModelProperty(name="Product ID", value="Holds the minimum 3 INT Value", required=true)
 	private int productId;
 	
+	@ApiModelProperty(name="ProductName",value="hold min 3 char product",required = true)
 	@NotEmpty(message = "Product name cannot be null")
 	@Size(min=3,max=15,message="Invalid product name")
 	private String productName;
+	
+	@ApiModelProperty(name="ProductCost",value="hold min 1000 cost",required = true)
 	@Min(value=1000,message="cost cannot be less than 1000")
 	private int productCost;
+	
+	@Max(value=5,message="Recommended star rating is 5 ")
+	@ApiModelProperty(name="Product ID", value="Holds the star rating out of 5", required=true)
 	private int startRating;
 	
+	@Pattern(regexp="^Laptop",message="Not Matching our Laptop Inventory!")
+	@ApiModelProperty(name="Product ID", value="Holds the Laptop, Mobile Phones and Headset Categories", required=true)
 	private String category;
+	
 	public int getProductId() {
 		return productId;
 	}

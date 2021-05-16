@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ValidationErrorHandler extends ResponseEntityExceptionHandler{
 
-	@Override
+	//@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		Map<String, String> map = new HashMap<>();
 		ex.getBindingResult().getAllErrors().forEach((error)->{

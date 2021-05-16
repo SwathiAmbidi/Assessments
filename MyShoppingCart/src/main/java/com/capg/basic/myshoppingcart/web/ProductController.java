@@ -25,9 +25,13 @@ import com.capg.basic.myshoppingcart.exception.InvalidCostRangeException;
 import com.capg.basic.myshoppingcart.exception.MyGlobalExceptionHandler;
 import com.capg.basic.myshoppingcart.service.ProductService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Validated
 @RestController
 @RequestMapping("/api")
+@Api(value="My Gadget Inventory", description="Various API Works on Laptop Inventory Management")
 public class ProductController {
 	
 	@Autowired
@@ -43,7 +47,7 @@ public class ProductController {
 	}
 	
 	
-	
+	@ApiOperation(value="Product GET Mapping",response=List.class)
 	@GetMapping("/products")
     public List<Product> findAllProducts() {
         return service.getAllProducts();
@@ -74,6 +78,8 @@ public class ProductController {
 	{
 		return service.getAllProductsByCategory(category);
 	}
+	
+	@ApiOperation(value="Add Product",response=Product.class)
 	@PostMapping("/addProduct")
     public Product addProduct(@Valid @RequestBody Product product) throws InvalidCategory{
 		if(product.getCategory().equals("Laptop") || product.getCategory().equals("Mobile") || product.getCategory().equals("Headset")) {
