@@ -1,0 +1,76 @@
+<table >
+    <h3>All Stocks</h3>
+    <tr>
+        <th>Stock-Name  </th> 
+        <th> Cost-Price  </th>
+        <th> Volume </th>
+         <th> Vwap </th>
+         <th> Valuation </th>
+         <th> holding  </th>
+    </tr>
+    <tr *ngFor="let stock of getAllStocks()">
+        <td> {{stock.companyName}}  </td>
+        <td>  {{stock.costPrice}} </td>
+        <td>   {{stock.volume}} </td>
+        <td> {{stock.vwap}} </td>
+        <td>  {{(stock.costPrice < stock.vwap) ?"Fair-Price":"Over-Price"}}</td>
+        <td>  {{stock.holding}}</td>
+ 
+    </tr>
+
+    
+</table>
+
+<hr>
+
+    Bid Price
+    <input type="text" style="margin-left: 20px;" #myCost/><br/>
+    Stock Name
+    <input type="text" #myStock/><br/>
+    <button (click)="getCostFromUser(myCost.value,myStock.value)" style="background-color: greenyellow;">Submit</button>
+
+    
+<div *ngIf="isAccepted;then buyTemplate else rejectedTemplate">
+    
+</div>
+
+<ng-template #buyTemplate>
+    <button [hidden]="!isAccepted" (click)="doBuyStock()" style="background-color: royalblue;margin-left: 10px;">Buy</button>
+</ng-template>
+<ng-template #rejectedTemplate>
+    <h5 [hidden]="isAccepted" > bid price is not around 1 percent than cost price</h5>
+</ng-template>
+
+<table >
+    <h4 style="color: blue;">Purchased stocks</h4>
+    <tr>
+        <th>Stock-Name  </th> 
+        <th> Cost-Price  </th>
+        <th> Volume </th>
+         <th> Vwap </th>
+         <th> Valuation </th>
+         <th> holding  </th>
+    </tr>
+
+    <tr *ngFor="let stock of getholdingStocks()">
+            <td  > 
+                <div *ngIf="stock.vwap > stock.costPrice;then ifblock else elseblock">
+                </div>
+                <ng-template #ifblock>
+                    <div style="color: green;">{{stock.companyName}}  </div>
+                </ng-template>
+                <ng-template #elseblock>
+                    <div>{{stock.companyName}}  </div>
+                </ng-template>
+            </td>
+        
+        <td>  {{stock.costPrice}} </td>
+        <td>   {{stock.volume}} </td>
+        <td> {{stock.vwap}} </td>
+        <td>  {{(stock.costPrice < stock.vwap) ?"Fair-Price":"Over-Price"}}</td>
+        <td>  {{stock.holding}}</td>
+ 
+    </tr>
+
+    
+</table>

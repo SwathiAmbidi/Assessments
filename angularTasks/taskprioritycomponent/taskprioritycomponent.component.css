@@ -1,0 +1,11 @@
+table{
+    background-color: cornsilk;
+    color: darkgreen;
+    border-collapse: collapse;
+    width: 30%;
+
+
+}
+th,td{
+    border: 1px solid black;
+}

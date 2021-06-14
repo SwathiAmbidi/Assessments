@@ -1,0 +1,17 @@
+table{
+    width: 50%;
+    
+  } 
+  th{
+
+    background-color:lightcoral;
+    border: 1px solid black;
+  } 
+  td {
+      border: 1px solid black;
+      background-color: gainsboro;
+  }
+  
+  coloring{
+    color:green;
+  }
